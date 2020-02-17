@@ -1,17 +1,52 @@
 <?php
 declare(strict_types=1);
+require '../products.json';
+require '../groups.json';
+require '../customers.json';
+
 
 class User
 {
-    private $name;
+    public $name;
+    public $groupid=[];
 
     public function __construct(string $name)
     {
         $this->name = $name;
+
     }
 
     public function getName() : string
     {
         return $this->name;
     }
+
+    public function getGrid() : array
+    {
+        //implode("", $this->groupid);
+        return $this-> groupid;
+    }
+}
+
+class Products
+{
+    public $name;
+    public $price;
+    public $description;
+
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+
+    public function  getName() : string
+    {
+        return $this->name;
+    }
+
+    public function getPrice() : int
+    {
+        return $this->price;
+    }
+
 }
