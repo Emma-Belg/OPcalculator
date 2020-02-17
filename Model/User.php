@@ -1,8 +1,5 @@
 <?php
 declare(strict_types=1);
-require '../products.json';
-require '../groups.json';
-require '../customers.json';
 
 
 class User
