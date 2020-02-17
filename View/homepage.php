@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,6 +32,7 @@ require 'Model/Customer.php';?>
             </select>
             <select name="product" class="drpbutton">Products</select >
         </label>
+
     </form>
 </section>
 <?php require 'includes/footer.php'?>

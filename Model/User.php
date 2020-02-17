@@ -1,11 +1,31 @@
 <?php
+
+declare(strict_types=1);
+class User
+{
+    private $name;
+
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+}
+
+
+/*
 declare(strict_types=1);
 
 
 class User
 {
     public $name;
-    public $groupid=[];
+
+    //public $groupid=[];
 
     public function __construct(string $name)
     {
@@ -13,18 +33,19 @@ class User
 
     }
 
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
-
+}
+/*
     public function getGrid() : array
     {
         //implode("", $this->groupid);
         return $this-> groupid;
     }
 }
-
+/*
 class Products
 {
     public $name;
@@ -47,3 +68,4 @@ class Products
     }
 
 }
+
