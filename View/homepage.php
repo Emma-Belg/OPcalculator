@@ -10,12 +10,28 @@
     <title>Becode - Boiler plate MVC</title>
 </head>
 <body>
-<?php require 'includes/header.php'?>
+<?php require 'includes/header.php'; ?>
+
 <section>
-    <h4>Hello <?php echo $user->getName()?>,</h4>
+<!--    <h4>Hello --><?php //echo $user->getName()?><!--,</h4>-->
+    <h1>Helloooooooooo</h1>
     <form method="get">
-        <button name="customer" class="drpbutton" type="submit">Customer</button>
-        <button name="product" class="drpbutton" type="submit">Products</button>
+        <label>
+            <select name="customer" class="drpbutton">Customer</select>
+
+        <?php
+        echo "yo mf";
+        $customerData = json_decode(file_get_contents("customers.json"));
+
+        $list = [];
+        foreach ($customerData as $row) {
+            $list[] = new Customer($row['name']);
+            //array_push($list, new Customer($row['name']));
+            echo "<option value='customer-name'>".$list[$row]."</option>";
+        }
+        ?>
+            <select name="product" class="drpbutton">Products</select >
+        </label>
     </form>
 </section>
 <?php require 'includes/footer.php'?>
