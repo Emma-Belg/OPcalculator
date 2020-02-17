@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,6 +14,7 @@
 <section>
     <h4>Hello <?php echo $user->getName()?>,</h4>
     <form method="get">
+        <select
         <button name="customer" class="drpbutton" type="submit">Customer</button>
         <button name="product" class="drpbutton" type="submit">Products</button>
     </form>
