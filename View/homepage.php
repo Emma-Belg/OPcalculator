@@ -40,9 +40,9 @@ require 'Model/SelectButton.php' ?>
                 $selectButton1 = new SelectButton();
                 $selectButton1->getInfo(json_decode(file_get_contents("products.json"), true));
 
-                if (isset($_GET['product'])){
-                    var_dump();
-                }
+                $displayProd = new Products();
+                $displayProd ->displayInfo(json_decode(file_get_contents("products.json"),true));
+                var_dump($displayProd);
                 ?>
             </select >
         </label>
