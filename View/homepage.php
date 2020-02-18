@@ -19,6 +19,7 @@ require 'Model/Customer.php';?>
     <form method="get">
         <label>
             <select name="customer" class="drpbutton">
+                <option></option>
 
         <?php
         $customerData = json_decode(file_get_contents("customers.json"),true);
@@ -31,6 +32,7 @@ require 'Model/Customer.php';?>
         ?>
             </select>
             <select name="product" class="drpbutton">
+                <option></option>
                 <?php
                 $productsData = json_decode(file_get_contents("products.json"),true);
 
