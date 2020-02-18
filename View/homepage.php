@@ -19,7 +19,7 @@ require 'Model/SelectButton.php' ?>
     <h1>Helloooooooooo</h1>
     <form action="#"  method="get">
         <label>
-            <select name="customer">
+            <select name="select">
                 <option></option>
                 <?php
                 $selectButton1 = new SelectButton();
@@ -27,10 +27,12 @@ require 'Model/SelectButton.php' ?>
                 ?>
             </select>
         </label>
-        <input type="submit" name="submit1" value="Get Selected Values" />
-        <?php $selectButton1->getValue('submit1', 'customer');?>
+        <!--<input type="submit" name="submit1" value="Get Selected Values" />-->
+        <div>
+        <?php $selectButton1->getValue('submit', 'select');?>
+        </div>
         <label>
-            <select name="product">
+            <select name="select">
                 <option></option>
                 <?php
                 $selectButton2 = new SelectButton();
@@ -38,8 +40,10 @@ require 'Model/SelectButton.php' ?>
                 ?>
             </select >
         </label>
-        <input type="submit" name="submit2" value="Get Selected Values" />
-        <?php $selectButton2->getValue('submit2', 'product');?>
+        <input type="submit" name="submit" value="Get Selected Values" />
+        <div>
+        <?php $selectButton2->getValue('submit', 'select');?>
+        </div>
     </form>
 </section>
 <?php require 'includes/footer.php'?>
