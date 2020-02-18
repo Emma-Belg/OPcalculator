@@ -77,5 +77,5 @@ class Products
         return $this->price;
     }
 
-}x
+}*/
 

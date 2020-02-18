@@ -11,7 +11,10 @@
 </head>
 <body>
 <?php require 'includes/header.php';
-require 'Model/SelectButton.php' ?>
+require 'Model/SelectButton.php';
+require 'Model/products.php';
+?>
+
 
 
 
@@ -19,26 +22,24 @@ require 'Model/SelectButton.php' ?>
     <h1>Helloooooooooo</h1>
     <form action="#"  method="get">
         <label>
-            <select name="customer">
+            <select name="select">
                 <option></option>
                 <?php
                 $selectButton1 = new SelectButton();
                 $selectButton1->getInfo(json_decode(file_get_contents("customers.json"), true));
-
-                if(isset($_GET["submit"])){
-                    $selected_val = $_GET["customer"];
-                    echo "Selected Customer is: ". $selected_val;
-                }
                 ?>
-
             </select>
         </label>
+        <!--<input type="submit" name="submit1" value="Get Selected Values" />-->
+        <div>
+        <?php $selectButton1->getValue('submit', 'select');?>
+        </div>
         <label>
-            <select name="product" class="drpbutton">
+            <select name="select">
                 <option></option>
                 <?php
-                $selectButton1 = new SelectButton();
-                $selectButton1->getInfo(json_decode(file_get_contents("products.json"), true));
+                $selectButton2 = new SelectButton();
+                $selectButton2->getInfo(json_decode(file_get_contents("products.json"), true));
 
                 $displayProd = new Products;
                 $displayProd->displayInfo(json_decode(file_get_contents("products.json"), true));
@@ -46,6 +47,9 @@ require 'Model/SelectButton.php' ?>
             </select >
         </label>
         <input type="submit" name="submit" value="Get Selected Values" />
+        <div>
+        <?php $selectButton2->getValue('submit', 'select');?>
+        </div>
     </form>
 </section>
 <?php require 'includes/footer.php'?>
