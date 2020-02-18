@@ -39,6 +39,9 @@ require 'Model/SelectButton.php' ?>
                 <?php
                 $selectButton1 = new SelectButton();
                 $selectButton1->getInfo(json_decode(file_get_contents("products.json"), true));
+
+                $displayProd = new Products;
+                $displayProd->displayInfo(json_decode(file_get_contents("products.json"), true));
                 ?>
             </select >
         </label>

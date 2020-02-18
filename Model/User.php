@@ -4,6 +4,7 @@ declare(strict_types=1);
 class User
 {
     private $name;
+    private $id;
 
     public function __construct(string $name)
     {
@@ -14,13 +15,17 @@ class User
     {
         return $this->name;
     }
+
+    public function  getId() {
+
+    }
+
+    public function displayId()
+    {
+        return $this->id;
+    }
 }
 
-
-if(isset($_GET["submit"])){
-$selected_val = $_GET["customer"];
-echo "Selected Customer is:". $selected_val;
-}
 
 /*
 declare(strict_types=1);
