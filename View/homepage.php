@@ -22,7 +22,7 @@ require 'Model/products.php';
     <h1>Helloooooooooo</h1>
     <form action="#"  method="get">
         <label>
-            <select name="select">
+            <select name="customer">
                 <option></option>
                 <?php
                 $selectButton1 = new SelectButton();
@@ -31,16 +31,10 @@ require 'Model/products.php';
             </select>
         </label>
         <!--<input type="submit" name="submit1" value="Get Selected Values" />-->
-        <div>
-        <?php $selectButton1->getValue('submit', 'select');?>
-        </div>
         <label>
-            <select name="select">
+            <select name="product">
                 <option></option>
                 <?php
-                $selectButton1 = new SelectButton();
-                $selectButton1->getInfo(json_decode(file_get_contents("products.json"), true));
-
                 $displayProd = new Products();
                 $displayProd ->displayInfo(json_decode(file_get_contents("products.json"),true));
 
@@ -52,7 +46,10 @@ require 'Model/products.php';
         </label>
         <input type="submit" name="submit" value="Get Selected Values" />
         <div>
-        <?php $selectButton2->getValue('submit', 'select');?>
+        <?php
+        $selectedValues = new SelectButton();
+        $selectedValues->getValue();
+        ?>
         </div>
     </form>
 </section>

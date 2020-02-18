@@ -3,7 +3,9 @@ declare(strict_types = 1);
 
 class SelectButton
 {
-    private $selectedVal;
+    private $selectedCostumer;
+
+    private $selectedProduct = "";
 
     private $infoArray = [];
 
@@ -14,11 +16,12 @@ class SelectButton
         }
     }
 
-    public function getValue($nameInputButton, $nameSelectButton)
+    public function getValue()
     {
-        if(isset($_GET[$nameInputButton])){
-            $this->selectedVal = $_GET[$nameSelectButton];
-            echo "<br>Selected: " . $this->selectedVal . "<br>";
+        if(isset($_GET['submit'])){
+            $this->selectedCostumer = $_GET['customer'];
+            $this->selectedProduct = $_GET['product'];
+            echo "<br>Selected: " . $this->selectedCostumer . ' ' . $this->selectedProduct . "<br>";
         }
 
     }
