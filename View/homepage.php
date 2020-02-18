@@ -49,7 +49,7 @@ require 'Model/products.php';
             $displayProd ->getInfo(json_decode(file_get_contents("products.json"),true));
 
             $selectButton2->showProduct();
-            $displayProd->displayInfo();
+         //   $displayProd->displayInfo();
             ?></p>
         <div>
         <?php
