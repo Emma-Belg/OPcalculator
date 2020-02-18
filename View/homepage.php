@@ -35,11 +35,18 @@ require 'Model/products.php';
             <select name="product">
                 <option></option>
                 <?php
+
                 $selectButton2 = new SelectButton();
                 $selectButton2->getInfo(json_decode(file_get_contents("products.json"), true));
 
-                $displayProd = new Products;
-                $displayProd->displayInfo(json_decode(file_get_contents("products.json"), true));
+                $displayProd = new Products();
+                $displayProd ->displayInfo(json_decode(file_get_contents("products.json"),true));
+
+                if (!empty($selectedProduct)) {
+                    echo "test";
+
+                }
+
                 ?>
             </select >
         </label>
