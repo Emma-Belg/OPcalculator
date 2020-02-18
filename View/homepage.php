@@ -11,14 +11,8 @@
 </head>
 <body>
 <?php require 'includes/header.php';
-<<<<<<< HEAD
-require '../Model/Customer.php';
-require 'customers.json';
-require 'products.json';
-?>
-=======
 require 'Model/SelectButton.php' ?>
->>>>>>> ecdb97515d5ab02a031d57f195832fa747b7f9ce
+
 
 <section>
     <h1>Helloooooooooo</h1>
