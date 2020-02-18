@@ -10,7 +10,7 @@ class SelectButton
     public function getInfo($jsonFile) {
         foreach ($jsonFile as $row) {
             $this->infoArray[] = $row['name'];
-            echo "<option value='name'>".$row["name"]  ."</option>";
+            echo "<option>".$row["name"]  ."</option>";
         }
     }
 
