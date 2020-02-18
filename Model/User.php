@@ -17,6 +17,11 @@ class User
 }
 
 
+if(isset($_GET["submit"])){
+$selected_val = $_GET["customer"];
+echo "Selected Customer is:". $selected_val;
+}
+
 /*
 declare(strict_types=1);
 
@@ -67,5 +72,5 @@ class Products
         return $this->price;
     }
 
-}
+}x
 
