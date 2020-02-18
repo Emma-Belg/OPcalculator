@@ -20,6 +20,7 @@ class User
 
     }
 
+
     public function displayId()
     {
         return $this->id;
