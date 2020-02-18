@@ -30,7 +30,17 @@ require 'Model/Customer.php';?>
         }
         ?>
             </select>
-            <select name="product" class="drpbutton">Products</select >
+            <select name="product" class="drpbutton">
+                <?php
+                $productsData = json_decode(file_get_contents("products.json"),true);
+
+                $allProducts = [];
+                foreach ($productsData as $row) {
+                    $allProducts[] = new Products($row['name']);
+                    echo "<option value='Products-name'>".$row["name"]  ."</option>";
+                }
+                ?>
+            </select >
         </label>
 
     </form>
