@@ -6,8 +6,10 @@ declare(strict_types = 1);
 class HomepageController
 {
 
-    private $infoArray = [];
-    private $jsonToObject;
+    private $customerArray = [];
+    private $productsArray = [];
+    private $groupsArray = [];
+    private $customerObj;
 
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST)
@@ -20,12 +22,12 @@ class HomepageController
     }
 
 
-
-    public function getInfo($jsonFile) {
-        //$this->jsonToObject = json_decode(file_get_contents($jsonFile), true);
-        foreach ($jsonFile as $row) {
-            $this->infoArray[] = $row['name'];
-            echo "<option>". $row["name"]."</option>";
+    public function getCustomers() {
+        $this->customerObj = json_decode(file_get_contents("customers.json"), true);
+        foreach ($this->customerObj as $row) {
+            $this->customerArray[] = $row['id']; $row['name']; $row['group_id'];
         }
+        echo "testing";
+        return $this->customerArray;
     }
 }
