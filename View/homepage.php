@@ -32,6 +32,10 @@ require 'Model/SelectButton.php' ?>
                 <?php
                 $selectButton2 = new SelectButton();
                 $selectButton1->getInfo(json_decode(file_get_contents("products.json"), true));
+
+                if (isset($_GET['product'])){
+                    var_dump();
+                }
                 ?>
             </select>
         </label>
