@@ -1,28 +1,21 @@
 <?php
 declare(strict_types = 1);
 
+session_start();
+
 class SelectButton
 {
     private $selectedCostumer;
-
     private $selectedProduct = "";
-
-    private $infoArray = [];
     private $usedProdValues = [];
 
-    public function getInfo($jsonFile) {
-        foreach ($jsonFile as $row) {
-            $this->infoArray[] = $row['name'];
-            echo "<option>". $row["name"]."</option>";
-        }
-    }
 
     public function getObject($selectedProd) {
         $prodOb = (json_decode(file_get_contents("products.json"), true));
         foreach ($prodOb as $row) {
             if($selectedProd == $row['name']){
                 $this->usedProdValues[] = $row['name']; $row['price']; $row['description'];
-                echo "<p>". $row["name"]. $row['price'] . $row['description'] . "</p>";
+                echo "<p><b>Product Name: </b>". $row["name"]. "<br><b>Price: </b> €".$row['price'] ."<br> <b>Description: </b>".  $row['description'] . "</p>";
             }
         }
     }
