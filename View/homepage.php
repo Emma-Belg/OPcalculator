@@ -11,7 +11,7 @@
 </head>
 <body>
 <?php require 'includes/header.php';
-require 'Model/Customer.php';?>
+require '../Model/Customer.php';?>
 
 <section>
 <!--    <h4>Hello --><?php //echo $user->getName()?><!--,</h4>-->
@@ -21,30 +21,19 @@ require 'Model/Customer.php';?>
             <select name="customer" class="drpbutton">
                 <option></option>
 
-        <?php
-        $customerData = json_decode(file_get_contents("customers.json"),true);
-
-        $allCustomers = [];
-        foreach ($customerData as $row) {
-            $allCustomers[] = new Customer($row['name']);
-            echo "<option value='customer-name'>".$row["name"]  ."</option>";
-        }
-        ?>
+                <?php
+                $selectButton1 = new SelectButton();
+                $selectButton1->getInfo(json_decode(file_get_contents("customers.json"), true));
+                ?>
             </select>
             <select name="product" class="drpbutton">
                 <option></option>
                 <?php
-                $productsData = json_decode(file_get_contents("products.json"),true);
-
-                $allProducts = [];
-                foreach ($productsData as $row) {
-                    $allProducts[] = new Products($row['name']);
-                    echo "<option value='Products-name'>".$row["name"]  ."</option>";
-                }
+                $selectButton2 = new SelectButton();
+                $selectButton1->getInfo(json_decode(file_get_contents("products.json"), true));
                 ?>
-            </select >
+            </select>
         </label>
-
     </form>
 </section>
 <?php require 'includes/footer.php'?>

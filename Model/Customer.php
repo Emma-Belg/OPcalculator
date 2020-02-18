@@ -1,13 +1,17 @@
 <?php
+declare(strict_types = 1);
 
-
-class Customer
+class SelectButton
 {
     private $name;
 
-    public function __construct($name)
-    {
-        $this->name = $name;
+    private $infoArray = [];
+
+    public function getInfo($jsonFile) {
+        foreach ($jsonFile as $row) {
+            $this->infoArray[] = $row['name'];
+            echo "<option value='name'>".$row["name"]  ."</option>";
+        }
     }
 
     public function getName() : string
@@ -15,22 +19,6 @@ class Customer
         return $this->name;
     }
 
-
 }
 
-class Products
-{
-    private $name;
 
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
-
-    public function getName() : string
-    {
-        return $this->name;
-    }
-
-
-}
