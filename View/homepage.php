@@ -27,7 +27,7 @@ require 'Model/SelectButton.php' ?>
 
                 if(isset($_GET["submit"])){
                     $selected_val = $_GET["customer"];
-                    echo "Selected Customer is:". $selected_val;
+                    echo "Selected Customer is: ". $selected_val;
                 }
                 ?>
 
@@ -46,7 +46,7 @@ require 'Model/SelectButton.php' ?>
                 ?>
             </select >
         </label>
-
+        <input type="submit" name="submit" value="Get Selected Values" />
     </form>
 </section>
 <?php require 'includes/footer.php'?>
