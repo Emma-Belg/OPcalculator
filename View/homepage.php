@@ -11,7 +11,10 @@
 </head>
 <body>
 <?php require 'includes/header.php';
-require '../Model/Customer.php';?>
+require '../Model/Customer.php';
+require 'customers.json';
+require 'products.json';
+?>
 
 <section>
 <!--    <h4>Hello --><?php //echo $user->getName()?><!--,</h4>-->
