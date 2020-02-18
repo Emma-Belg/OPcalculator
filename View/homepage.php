@@ -24,25 +24,22 @@ require 'Model/SelectButton.php' ?>
                 <?php
                 $selectButton1 = new SelectButton();
                 $selectButton1->getInfo(json_decode(file_get_contents("customers.json"), true));
-
-                if(isset($_GET["submit"])){
-                    $selected_val = $_GET["customer"];
-                    echo "Selected Customer is: ". $selected_val;
-                }
                 ?>
-
             </select>
         </label>
+        <input type="submit" name="submit1" value="Get Selected Values" />
+        <?php $selectButton1->getValue('submit1', 'customer');?>
         <label>
-            <select name="product" class="drpbutton">
+            <select name="product">
                 <option></option>
                 <?php
-                $selectButton1 = new SelectButton();
-                $selectButton1->getInfo(json_decode(file_get_contents("products.json"), true));
+                $selectButton2 = new SelectButton();
+                $selectButton2->getInfo(json_decode(file_get_contents("products.json"), true));
                 ?>
             </select >
         </label>
-        <input type="submit" name="submit" value="Get Selected Values" />
+        <input type="submit" name="submit2" value="Get Selected Values" />
+        <?php $selectButton2->getValue('submit2', 'product');?>
     </form>
 </section>
 <?php require 'includes/footer.php'?>
