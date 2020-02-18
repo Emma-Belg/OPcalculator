@@ -39,18 +39,18 @@ require 'Model/products.php';
                 $selectButton2 = new SelectButton();
                 $selectButton2->getInfo(json_decode(file_get_contents("products.json"), true));
 
-                $displayProd = new Products();
-                $displayProd ->displayInfo(json_decode(file_get_contents("products.json"),true));
-
-                if (!empty($selectedProduct)) {
-                    echo "test";
-
-                }
-
                 ?>
             </select >
         </label>
         <input type="submit" name="submit" value="Get Selected Values" />
+
+        <p><?php
+            $displayProd = new Products();
+            $displayProd ->getInfo(json_decode(file_get_contents("products.json"),true));
+
+            $selectButton2->showProduct();
+            $displayProd->displayInfo();
+            ?></p>
         <div>
         <?php
         $selectedValues = new SelectButton();
