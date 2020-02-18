@@ -11,7 +11,10 @@
 </head>
 <body>
 <?php require 'includes/header.php';
-require 'Model/SelectButton.php' ?>
+require 'Model/SelectButton.php';
+require 'Model/products.php';
+?>
+
 
 
 
@@ -35,6 +38,13 @@ require 'Model/SelectButton.php' ?>
             <select name="select">
                 <option></option>
                 <?php
+                $selectButton1 = new SelectButton();
+                $selectButton1->getInfo(json_decode(file_get_contents("products.json"), true));
+
+                $displayProd = new Products();
+                $displayProd ->displayInfo(json_decode(file_get_contents("products.json"),true));
+
+
                 $selectButton2 = new SelectButton();
                 $selectButton2->getInfo(json_decode(file_get_contents("products.json"), true));
                 ?>
