@@ -11,10 +11,11 @@
 </head>
 <body>
 <?php require 'includes/header.php';
-require 'Model/Customer.php';?>
+require 'Model/SelectButton.php' ?>
+
+
 
 <section>
-<!--    <h4>Hello --><?php //echo $user->getName()?><!--,</h4>-->
     <h1>Helloooooooooo</h1>
     <form method="get">
         <label>
@@ -34,7 +35,16 @@ require 'Model/Customer.php';?>
         }
 
         ?>
+
+                <option></option>
+                <?php
+                $selectButton1 = new SelectButton();
+                $selectButton1->getInfo(json_decode(file_get_contents("customers.json"), true));
+                ?>
+
             </select>
+        </label>
+        <label>
             <select name="product" class="drpbutton">
                 <?php
                 $productsData = json_decode(file_get_contents("products.json"),true);
