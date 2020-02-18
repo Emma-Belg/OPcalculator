@@ -13,8 +13,10 @@ class Products
     public function displayInfo($jsonFile) {
         foreach ($jsonFile as $row) {
             $this->infoArray[] = $row['name']; $row['description']; $row['price'];
-            echo "<p>".$row["name"]; $row['description']; $row['price']; ."</p>";
+            echo "<p>".$row["name"] . $row['description'] . $row['price'] ."</p>";
         }
+        echo $this->infoArray;
+        return $this->infoArray;
     }
 
     public function getName() : string
