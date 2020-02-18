@@ -14,31 +14,39 @@
 require 'Model/SelectButton.php' ?>
 
 
+
 <section>
     <h1>Helloooooooooo</h1>
-    <form method="get">
+    <form action="#"  method="get">
         <label>
-            <select name="customer" class="drpbutton">
+            <select name="customer">
                 <option></option>
                 <?php
                 $selectButton1 = new SelectButton();
                 $selectButton1->getInfo(json_decode(file_get_contents("customers.json"), true));
+
+                if(isset($_GET["submit"])){
+                    $selected_val = $_GET["customer"];
+                    echo "Selected Customer is:". $selected_val;
+                }
                 ?>
+
             </select>
         </label>
         <label>
             <select name="product" class="drpbutton">
                 <option></option>
                 <?php
-                $selectButton2 = new SelectButton();
+                $selectButton1 = new SelectButton();
                 $selectButton1->getInfo(json_decode(file_get_contents("products.json"), true));
 
                 if (isset($_GET['product'])){
                     var_dump();
                 }
                 ?>
-            </select>
+            </select >
         </label>
+
     </form>
 </section>
 <?php require 'includes/footer.php'?>
