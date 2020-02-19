@@ -1,6 +1,5 @@
 <?php
-declare(strict_types = 1);
-
+declare(strict_types=1);
 
 
 class HomepageController
@@ -10,6 +9,24 @@ class HomepageController
     private $productsArray = [];
     private $groupsArray = [];
     private $customerObj;
+
+    /* feel free to delete this, i was just experimenting a little, its still missing some shit anyway
+    
+    public function jsonsToArrays()
+    {
+        private $customerArray = [];
+        private $productsArray = [];
+        private $groupsArray = [];
+
+        $customersJson = json_decode(file_get_contents('../customers.json'), true);
+        $productsJson = json_decode(file_get_contents('../products.json'), true);
+        $groupsJson = json_decode(file_get_contents('../groups.json'), true);
+
+    }
+    */
+
+
+
 
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST)
@@ -22,10 +39,13 @@ class HomepageController
     }
 
 
-    public function getCustomers() {
+    public function getCustomers()
+    {
         $this->customerObj = json_decode(file_get_contents("customers.json"), true);
         foreach ($this->customerObj as $row) {
-            $this->customerArray[] = $row['id']; $row['name']; $row['group_id'];
+            $this->customerArray[] = $row['id'];
+            $row['name'];
+            $row['group_id'];
         }
         echo "testing";
         return $this->customerArray;
