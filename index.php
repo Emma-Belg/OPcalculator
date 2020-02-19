@@ -26,7 +26,7 @@ $customerObj->jsonToObject("customers.json");
 
 /*$controller->getCustomers();
 $controller->getProducts();*/
-if(isset($_SESSION)){
+if(!isset($_SESSION)){
     $_SESSION['customerObj'] = $customerObj->jsonToObject("customers.json");;
     $_SESSION['productObj'] = $productsObj->jsonToObject("products.json");
 }
