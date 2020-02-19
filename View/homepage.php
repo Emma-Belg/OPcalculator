@@ -26,7 +26,7 @@ require 'Model/products.php';
                 <option></option>
                 <?php
                 $selectButton1 = new SelectButton();
-                $selectButton1->getInfo(json_decode(file_get_contents("customers.json"), true));
+                $selectButton1->displayDropDownInfo($_SESSION['customerObj']);
                 ?>
             </select>
         </label>
@@ -37,8 +37,8 @@ require 'Model/products.php';
                 <?php
 
                 $selectButton2 = new SelectButton();
-                $selectButton2->getInfo(json_decode(file_get_contents("products.json"), true));
-
+                $selectButton2->displayDropDownInfo($_SESSION['productObj']);
+                
                 ?>
             </select >
         </label>
