@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 class SelectButton
 {
-    private $selectedCostumer;
+    private $selectedCustomer;
     private $selectedProduct = "";
     private $usedProdValues = [];
     private $infoArray =[];
@@ -29,10 +29,12 @@ class SelectButton
     public function getValue()
     {
         if(isset($_GET['submit'])){
-            $this->selectedCostumer = $_GET['customer'];
+            $this->selectedCustomer = $_GET['customer'];
             $this->selectedProduct = $_GET['product'];
+
             echo "<br>Selected: " . $this->selectedCostumer . ', ' . $this->selectedProduct . "<br>";
             self :: displaySelectedProd($this->selectedProduct);
+
         }
 
     }

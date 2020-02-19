@@ -10,6 +10,8 @@ session_start();
 
 //include all your model files here
 require 'Model/User.php';
+require 'Model/products.php';
+require 'Model/SelectButton.php';
 //include all your controllers here
 require 'Controller/HomepageController.php';
 
