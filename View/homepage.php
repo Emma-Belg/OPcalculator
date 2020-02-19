@@ -13,15 +13,6 @@
 <?php require 'includes/header.php';
 require 'Model/SelectButton.php';
 require 'Model/products.php';
-
-
-/*$customerNameArr = [];
-if(isset($_SESSION['customerObj'])){
-    foreach($_SESSION['customerObj'] as $name){
-        $customerNameArr[] = $name['name'];
-        echo "<option>". $name["name"]."</option>";
-    }
-}*/
 ?>
 
 <section>
@@ -43,7 +34,6 @@ if(isset($_SESSION['customerObj'])){
                 <option></option>
                 <?php
                 $selectButton2 = new SelectButton();
-                var_dump($_SESSION['productObj']);
                 $selectButton2->displayDropDownInfo($_SESSION['productObj']);
 
                 ?>
