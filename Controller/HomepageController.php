@@ -13,7 +13,6 @@ class HomepageController
         require 'View/homepage.php';
     }
 
-
     public function jsonToObject($json){
         $obj = json_decode(file_get_contents($json), true);
         return $obj;
