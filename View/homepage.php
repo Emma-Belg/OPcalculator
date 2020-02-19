@@ -13,6 +13,7 @@
 <?php require 'includes/header.php';
 require 'Model/SelectButton.php';
 require 'Model/products.php';
+require 'Model/Group.php';
 ?>
 
 <section>
@@ -52,6 +53,9 @@ require 'Model/products.php';
         <?php
         $selectedValues = new SelectButton();
         $selectedValues->getValue();
+
+        $id = new Group();
+        $id->getSelectedCust();
         ?>
         </div>
     </form>
