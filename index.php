@@ -6,6 +6,8 @@ ini_set('display_errors', "1");
 ini_set('display_startup_errors', "1");
 error_reporting(E_ALL);
 
+session_start();
+
 //include all your model files here
 require 'Model/User.php';
 //include all your controllers here
@@ -15,3 +17,5 @@ require 'Controller/HomepageController.php';
 //this file should never be more than 20 lines of code!
 $controller = new HomepageController();
 $controller->render($_GET, $_POST);
+
+

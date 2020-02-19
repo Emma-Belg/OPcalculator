@@ -13,6 +13,18 @@
 <?php require 'includes/header.php';
 require 'Model/SelectButton.php';
 require 'Model/products.php';
+
+$controller = new HomepageController();
+$controller->getCustomers();
+echo $controller->getCustomers();
+$_SESSION['customerObj'] = $controller->getCustomers();
+/*$customerNameArr = [];
+if(isset($_SESSION['customerObj'])){
+    foreach($_SESSION['customerObj'] as $name){
+        $customerNameArr[] = $name['name'];
+        echo "<option>". $name["name"]."</option>";
+    }
+}*/
 ?>
 
 
@@ -26,7 +38,7 @@ require 'Model/products.php';
                 <option></option>
                 <?php
                 $selectButton1 = new HomepageController();
-                $selectButton1->getInfo(json_decode(file_get_contents("customers.json"), true));
+               // $selectButton1->getInfo(json_decode(file_get_contents("customers.json"), true));
                 ?>
             </select>
         </label>
@@ -36,8 +48,7 @@ require 'Model/products.php';
                 <option></option>
                 <?php
 
-                $selectButton2 = new HomepageController();
-                $selectButton2->getInfo(json_decode(file_get_contents("products.json"), true));
+
 
                 ?>
             </select >
