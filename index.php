@@ -18,4 +18,15 @@ require 'Controller/HomepageController.php';
 $controller = new HomepageController();
 $controller->render($_GET, $_POST);
 
+$productsObj = new HomepageController();
+$productsObj->jsonToObject("products.json");
 
+$customerObj = new HomepageController();
+$customerObj->jsonToObject("customers.json");
+
+/*$controller->getCustomers();
+$controller->getProducts();*/
+if(isset($_SESSION)){
+    $_SESSION['customerObj'] = $customerObj->jsonToObject("customers.json");;
+    $_SESSION['productObj'] = $productsObj->jsonToObject("products.json");
+}

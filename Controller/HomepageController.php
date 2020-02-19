@@ -9,7 +9,6 @@ class HomepageController
     private $customerArray = [];
     private $productsArray = [];
     private $groupsArray = [];
-    private $customerObj;
 
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST)
@@ -21,13 +20,30 @@ class HomepageController
         require 'View/homepage.php';
     }
 
+/*    public function __construct($json)
+    {
+        $obj = json_decode(file_get_contents($json), true);
+        return $obj;
+    }*/
 
-    public function getCustomers() {
+    public function jsonToObject($json){
+        $obj = json_decode(file_get_contents($json), true);
+        return $obj;
+    }
+
+/*    public function getCustomers() {
         $this->customerObj = json_decode(file_get_contents("customers.json"), true);
-        foreach ($this->customerObj as $row) {
-            $this->customerArray[] = $row['id']; $row['name']; $row['group_id'];
-        }
-        echo "testing";
+/*        foreach ($this->customerObj as $key=>$row) {
+            $this->customerArray[$key]= $row['id']; $row['name']; $row['group_id'];
+        }*/
+/*            array_push($this->customerArray, $this->customerObj);
         return $this->customerArray;
     }
+
+    public function getProducts() {
+        $productObj = json_decode(file_get_contents("products.json"), true);
+        //array_push($this->productsArray, $productObj);
+        //return $this->productsArray;
+        return $productObj;
+    }*/
 }

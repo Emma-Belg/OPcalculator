@@ -14,10 +14,7 @@
 require 'Model/SelectButton.php';
 require 'Model/products.php';
 
-$controller = new HomepageController();
-$controller->getCustomers();
-echo $controller->getCustomers();
-$_SESSION['customerObj'] = $controller->getCustomers();
+
 /*$customerNameArr = [];
 if(isset($_SESSION['customerObj'])){
     foreach($_SESSION['customerObj'] as $name){
@@ -27,9 +24,6 @@ if(isset($_SESSION['customerObj'])){
 }*/
 ?>
 
-
-
-
 <section>
     <h1>Helloooooooooo</h1>
     <form action="#"  method="get">
@@ -37,8 +31,9 @@ if(isset($_SESSION['customerObj'])){
             <select name="customer">
                 <option></option>
                 <?php
-                $selectButton1 = new HomepageController();
-               // $selectButton1->getInfo(json_decode(file_get_contents("customers.json"), true));
+                $selectButton1 = new SelectButton();
+                $selectButton1->displayDropDownInfo($_SESSION['customerObj']);
+
                 ?>
             </select>
         </label>
@@ -47,8 +42,9 @@ if(isset($_SESSION['customerObj'])){
             <select name="product">
                 <option></option>
                 <?php
-
-
+                $selectButton2 = new SelectButton();
+                var_dump($_SESSION['productObj']);
+                $selectButton2->displayDropDownInfo($_SESSION['productObj']);
 
                 ?>
             </select >
@@ -59,8 +55,7 @@ if(isset($_SESSION['customerObj'])){
             $displayProd = new Products();
             $displayProd ->getInfo(json_decode(file_get_contents("products.json"),true));
 
-            $selectedProd = new SelectButton();
-            $selectedProd->showProduct();
+            $selectButton2->showProduct();
          //   $displayProd->displayInfo();
             ?></p>
         <div>
