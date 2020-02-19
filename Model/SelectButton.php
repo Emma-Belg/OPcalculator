@@ -5,7 +5,7 @@ session_start();
 
 class SelectButton
 {
-    private $selectedCostumer;
+    private $selectedCustomer;
     private $selectedProduct = "";
     private $usedProdValues = [];
 
@@ -23,9 +23,9 @@ class SelectButton
     public function getValue()
     {
         if(isset($_GET['submit'])){
-            $this->selectedCostumer = $_GET['customer'];
+            $this->selectedCustomer = $_GET['customer'];
             $this->selectedProduct = $_GET['product'];
-            echo "<br>Selected: " . $this->selectedCostumer . ' ' . $this->selectedProduct . "<br>";
+            echo "<br>Selected: " . $this->selectedCustomer . ' ' . $this->selectedProduct . "<br>";
             self :: getObject($this->selectedProduct);
         }
 
