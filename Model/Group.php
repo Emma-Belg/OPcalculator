@@ -44,7 +44,7 @@ class Group
         }
 
         //Get the discounts
-        foreach ($groupOb as $row) {
+        /*foreach ($groupOb as $row) {
             if ($this->idSelectedCust == $row['id']) {
                 if (array_key_exists('variable_discount', $row)) {
                     array_push($this->variableDiscount, $row['variable_discount']);
@@ -52,7 +52,24 @@ class Group
                 if (array_key_exists('fixed_discount', $row)){
                     array_push($this->fixedDiscount, $row['fixed_discount']);
                 }
-                    $this->idSelectedCust = $row['group_id'];
+                $this->idSelectedCust = $row['group_id'];
+
+            }
+        }*/
+
+        //Get the discounts 2.0
+        for($i = 0; $i < count($groupOb); $i++) {
+            if ($this->idSelectedCust == $groupOb[$i]['id']) {
+                if (array_key_exists('variable_discount', $groupOb[$i])) {
+                    array_push($this->variableDiscount, $groupOb[$i]['variable_discount']);
+                }
+                if (array_key_exists('fixed_discount', $groupOb[$i])){
+                    array_push($this->fixedDiscount, $groupOb[$i]['fixed_discount']);
+                }
+                if($groupOb[$i]['group_id'] != null){
+                    $this->idSelectedCust = $groupOb[$i]['group_id'];
+                    $i = 0;
+                }
 
             }
         }
@@ -62,6 +79,8 @@ class Group
             $this->sumFixedValue = array_sum($this->fixedDiscount);
             if ($this->sumFixedValue < $this->price) {
                 $this->sumFixedValue = $this->price - $this->sumFixedValue;
+            }else{
+                $this->sumFixedValue = $this->price;
             }
         }
 
