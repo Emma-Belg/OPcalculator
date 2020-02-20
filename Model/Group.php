@@ -55,7 +55,9 @@ class Group
                     array_push($this->fixedDiscount, $row['fixed_discount']);
                     echo 'fixed discount: ' . $row['fixed_discount'] . '<br>';
                 }
-                $this->idSelectedCust = $row['group_id'];
+                if(!empty($row['group_id'])) {
+                    $this->idSelectedCust = $row['group_id'];
+                }
             }
         }
 
