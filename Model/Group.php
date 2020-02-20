@@ -53,28 +53,31 @@ class Group
                     array_push($this->fixedDiscount, $row['fixed_discount']);
                 }
                     $this->idSelectedCust = $row['group_id'];
+
             }
         }
 
         //Calculating price after discount
         if (!empty($this->fixedDiscount)) {
-            print_r($this->fixedDiscount);
             $this->sumFixedValue = array_sum($this->fixedDiscount);
             if ($this->sumFixedValue < $this->price) {
                 $this->sumFixedValue = $this->price - $this->sumFixedValue;
+                echo 'Fixed: ' . $this->sumFixedValue . '<br>';
             }
         }
 
         if (!empty($this->variableDiscount)) {
-            print_r($this->variableDiscount);
             $this->maxVariableValue = max($this->variableDiscount);
             $this->maxVariableValue = ($this->price - ($this->price * ($this->maxVariableValue / 100)));
+            echo 'Variable discount: ' . $this->maxVariableValue . '<br>';
         }
 
-        if ($this->sumFixedValue > $this->maxVariableValue) {
-            echo 'The price after discount is: ' . $this->sumFixedValue;
-        } else {
+        if ($this->sumFixedValue > $this->maxVariableValue && $this->maxVariableValue != 0) {
             echo 'The price after discount is: ' . $this->maxVariableValue;
+        }
+
+        if ($this->maxVariableValue > $this->sumFixedValue && $this->sumFixedValue != 0){
+            echo 'The price after discount is: ' . $this->sumFixedValue . '<br>';
         }
 
     }
