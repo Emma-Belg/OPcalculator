@@ -28,7 +28,6 @@ class HomepageController
 
     public function jsonToObject($json)
     {
-        $obj = json_decode(file_get_contents($json), true);
-        return $obj;
+        return json_decode(file_get_contents($json), true);
     }
 }

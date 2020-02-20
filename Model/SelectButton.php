@@ -12,8 +12,6 @@ class SelectButton
     public function displayDropDownInfo($session) {
         foreach ($session as $key=>$row) {
             $this->infoArray[$key] = $row['name'];
-            //var_dump( $this->infoArray[$key]);
-            //echo "<option value='name'>".$row["name"]  ."</option>";
             echo "<option>".$row['name']  ."</option>";
         }
     }
