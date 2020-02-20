@@ -64,21 +64,19 @@ class Group
             $this->sumFixedValue = array_sum($this->fixedDiscount);
             if ($this->sumFixedValue < $this->price) {
                 $this->sumFixedValue = $this->price - $this->sumFixedValue;
-                echo 'Fixed: ' . $this->sumFixedValue . '<br>';
             }
         }
 
         if (!empty($this->variableDiscount)) {
             $this->maxVariableValue = max($this->variableDiscount);
             $this->maxVariableValue = ($this->price - ($this->price * ($this->maxVariableValue / 100)));
-            echo 'Variable discount: ' . $this->maxVariableValue . '<br>';
         }
 
-        if ($this->sumFixedValue > $this->maxVariableValue && $this->maxVariableValue != 0) {
-            echo 'The price after discount is: ' . $this->maxVariableValue;
+        if ($this->sumFixedValue > $this->maxVariableValue && $this->maxVariableValue != 0 || $this->sumFixedValue == 0) {
+            echo 'The price after discount is: ' . $this->maxVariableValue . '<br>';
         }
 
-        if ($this->maxVariableValue > $this->sumFixedValue && $this->sumFixedValue != 0){
+        if ($this->maxVariableValue > $this->sumFixedValue && $this->sumFixedValue != 0 || $this->maxVariableValue == 0){
             echo 'The price after discount is: ' . $this->sumFixedValue . '<br>';
         }
 
