@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 class HomepageController
 {
@@ -9,11 +9,25 @@ class HomepageController
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.
 
+        $productsObj = new HomepageController();
+        $productsObj->jsonToObject("products.json");
+
+        $customerObj = new HomepageController();
+        $customerObj->jsonToObject("customers.json");
+
+        $groupObj = new HomepageController();
+        $groupObj->jsonToObject("groups.json");
+
+        $_SESSION['customerObj'] = $customerObj->jsonToObject("customers.json");
+        $_SESSION['productObj'] = $productsObj->jsonToObject("products.json");
+
+
         //load the view
         require 'View/homepage.php';
     }
 
-    public function jsonToObject($json){
+    public function jsonToObject($json)
+    {
         $obj = json_decode(file_get_contents($json), true);
         return $obj;
     }
