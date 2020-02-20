@@ -30,9 +30,8 @@ class Group
         if (isset($_GET['submit'])) {
             $this->selectedProd = $_GET['product'];
             foreach ($productsOb as $row) {
-                if ($this->selectedProd == $row['price']) {
+                if ($this->selectedProd == $row['name']) {
                     $this->price = $row['price'];
-                    echo 'price: ' . $this->price . '<br>';
                 }
             }
         }
@@ -47,14 +46,14 @@ class Group
         //Get the discounts
         foreach ($groupOb as $row) {
             if ($this->idSelectedCust == $row['id']) {
-                echo 'name of group: ' . $row['name'] . '<br>';
                 if (array_key_exists('variable_discount', $row)) {
                     array_push($this->variableDiscount, $row['variable_discount']);
-                    echo 'variable discount: ' . $row['variable_discount'] . '<br>';
-                } else {
-                    array_push($this->fixedDiscount, $row['fixed_discount']);
-                    echo 'fixed discount: ' . $row['fixed_discount'] . '<br>';
                 }
+
+                if (array_key_exists('fixed_discount', $row)){
+                    array_push($this->fixedDiscount, $row['fixed_discount']);
+                }
+
                 if(!empty($row['group_id'])) {
                     $this->idSelectedCust = $row['group_id'];
                 }
@@ -63,19 +62,17 @@ class Group
 
         //Calculating price after discount
         if (!empty($this->fixedDiscount)) {
+            print_r($this->fixedDiscount);
             $this->sumFixedValue = array_sum($this->fixedDiscount);
             if ($this->sumFixedValue < $this->price) {
-                echo 'price : ' . $this->price . '<br>';
                 $this->sumFixedValue = $this->price - $this->sumFixedValue;
             }
         }
 
         if (!empty($this->variableDiscount)) {
+            print_r($this->variableDiscount);
             $this->maxVariableValue = max($this->variableDiscount);
-            echo 'variable discount: ' . $this->maxVariableValue . '<br>';
-            echo 'price: ' . $this->price . '<br>';
             $this->maxVariableValue = ($this->price - ($this->price * ($this->maxVariableValue / 100)));
-            echo 'the variable discount is: ' . $this->maxVariableValue . '<br>';
         }
 
         if ($this->sumFixedValue > $this->maxVariableValue) {
