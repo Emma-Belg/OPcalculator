@@ -22,15 +22,15 @@ class Group
 
     public function getIdSelectedCust($selectedCust)
     {
-        $custOb = (json_decode(file_get_contents("customers.json"), true));
+        $custOb = $_SESSION['customerObj'];
         $groupOb = (json_decode(file_get_contents("groups.json"), true));
-        $productsOb = (json_decode(file_get_contents("products.json"), true));
+        $productsOb = $_SESSION['productObj'];
 
         //Get price of selected product
         if (isset($_GET['submit'])) {
             $this->selectedProd = $_GET['product'];
             foreach ($productsOb as $row) {
-                if ($this->selectedProd == $row['price']) {
+                if ($this->selectedProd == $row['name']) {
                     $this->price = $row['price'];
                     echo 'price: ' . $this->price . '<br>';
                 }
@@ -51,12 +51,14 @@ class Group
                 if (array_key_exists('variable_discount', $row)) {
                     array_push($this->variableDiscount, $row['variable_discount']);
                     echo 'variable discount: ' . $row['variable_discount'] . '<br>';
-                } else {
+                }
+                if (array_key_exists('fixed_discount', $row)) {
                     array_push($this->fixedDiscount, $row['fixed_discount']);
                     echo 'fixed discount: ' . $row['fixed_discount'] . '<br>';
                 }
-                if(!empty($row['group_id'])) {
                     $this->idSelectedCust = $row['group_id'];
+                if(empty($row['group_id'])){
+                    return;
                 }
             }
         }
