@@ -27,12 +27,12 @@ class Group
         $productsOb = (json_decode(file_get_contents("products.json"), true));
 
         //Get price of selected product
-        $price = 0;
         if (isset($_GET['submit'])) {
             $this->selectedProd = $_GET['product'];
             foreach ($productsOb as $row) {
                 if ($this->selectedProd == $row['price']) {
-                    $price = $row['price'];
+                    $this->price = $row['price'];
+                    echo 'price: ' . $this->price . '<br>';
                 }
             }
         }
@@ -64,13 +64,18 @@ class Group
         //Calculating price after discount
         if (!empty($this->fixedDiscount)) {
             $this->sumFixedValue = array_sum($this->fixedDiscount);
-            if ($this->sumFixedValue < $price) {
-                $this->sumFixedValue = $price - $this->sumFixedValue;
+            if ($this->sumFixedValue < $this->price) {
+                echo 'price : ' . $this->price . '<br>';
+                $this->sumFixedValue = $this->price - $this->sumFixedValue;
             }
         }
+
         if (!empty($this->variableDiscount)) {
             $this->maxVariableValue = max($this->variableDiscount);
-            $this->maxVariableValue = $price - ($price * ($this->maxVariableValue / 100));
+            echo 'variable discount: ' . $this->maxVariableValue . '<br>';
+            echo 'price: ' . $this->price . '<br>';
+            $this->maxVariableValue = ($this->price - ($this->price * ($this->maxVariableValue / 100)));
+            echo 'the variable discount is: ' . $this->maxVariableValue . '<br>';
         }
 
         if ($this->sumFixedValue > $this->maxVariableValue) {
