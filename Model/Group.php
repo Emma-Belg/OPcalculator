@@ -61,7 +61,6 @@ class Group
 
         //Calculating price after discount
         if (!empty($this->fixedDiscount)) {
-            print_r($this->fixedDiscount);
             $this->sumFixedValue = array_sum($this->fixedDiscount);
             if ($this->sumFixedValue < $this->price) {
                 $this->sumFixedValue = $this->price - $this->sumFixedValue;
@@ -70,7 +69,6 @@ class Group
         }
 
         if (!empty($this->variableDiscount)) {
-            print_r($this->variableDiscount);
             $this->maxVariableValue = max($this->variableDiscount);
             $this->maxVariableValue = ($this->price - ($this->price * ($this->maxVariableValue / 100)));
             echo 'Variable discount: ' . $this->maxVariableValue . '<br>';
